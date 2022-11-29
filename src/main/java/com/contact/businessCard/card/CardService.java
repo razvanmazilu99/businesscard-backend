@@ -29,7 +29,7 @@ public class CardService {
         cardRepository.save(card);
     }
 
-    public void deleteCard(String cardId) {
+    public void deleteCard(Long cardId) {
         if (!cardRepository.existsById(cardId)) {
             throw new IllegalStateException("Card with id " + cardId + " does not exist");
         }
@@ -37,7 +37,7 @@ public class CardService {
     }
 
     @Transactional
-    public void updateCard(String cardId, String email, String firstName, String lastName, String phoneNumber, String address, String color, String title) {
+    public void updateCard(Long cardId, String email, String firstName, String lastName, String phoneNumber, String address, String color, String title) {
         //card.setId(cardId);
         //cardRepository.save(card);
         Card card = cardRepository.findById(cardId).orElseThrow(() -> new IllegalStateException("Card with id " + cardId + " does not exist"));

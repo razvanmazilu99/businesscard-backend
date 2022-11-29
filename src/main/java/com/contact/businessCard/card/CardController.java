@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "api/v1/card")
+@CrossOrigin(origins = "*")
 public class CardController {
     private final CardService cardService;
 
@@ -16,7 +17,7 @@ public class CardController {
     }
 
     @GetMapping
-    public List getCards() {
+    public List<Card> getCards() {
         return cardService.getCards();
     }
 
@@ -26,13 +27,13 @@ public class CardController {
     }
 
     @DeleteMapping(path = "{cardId}")
-    public void deleteCard(@PathVariable("cardId") String cardId) {
+    public void deleteCard(@PathVariable("cardId") Long cardId) {
         cardService.deleteCard(cardId);
     }
 
     @PutMapping(path = "{cardId}")
     public void updateCard(
-            @PathVariable("cardId") String cardId,
+            @PathVariable("cardId") Long cardId,
             @RequestParam(required = false) String email,
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName,

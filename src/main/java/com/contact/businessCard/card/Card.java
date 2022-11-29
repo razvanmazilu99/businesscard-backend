@@ -1,21 +1,20 @@
 package com.contact.businessCard.card;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.UUID;
 
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Card {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String email;
     private String firstName;
     private String lastName;
@@ -26,7 +25,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
+        return "Card {" +
                 "id='" + id + '\'' +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
